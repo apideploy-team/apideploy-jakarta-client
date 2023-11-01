@@ -1,0 +1,54 @@
+{
+	"groups": [
+		{
+			"name": "apideploy.config",
+			"type": "com.kalman03.apideploy.core.domain.ApideployConfig",
+			"sourceType": "com.kalman03.apideploy.core.domain.ApideployConfig"
+		}
+	],
+	"properties": [
+		{
+			"name": "apideploy.config.enabled",
+			"type": "java.lang.Boolean",
+			"description": "Enable API documentation synchronization",
+			"defaultValue": "true",
+			"sourceType": "com.kalman03.apideploy.core.domain.ApideployConfig"
+		},
+		{
+			"name": "apideploy.config.endpoint",
+			"type": "java.lang.String",
+			"description": "The apideploy synchronize endpoint",
+			"defaultValue": "https://open.apideploy.com/apisync",
+			"sourceType": "com.kalman03.apideploy.core.domain.ApideployConfig"
+		},
+		{
+			"name": "apideploy.config.app-id",
+			"type": "java.lang.String",
+			"sourceType": "com.kalman03.apideploy.core.domain.ApideployConfig"
+		},
+		{
+			"name": "apideploy.config.app-secret",
+			"type": "java.lang.String",
+			"sourceType": "com.kalman03.apideploy.core.domain.ApideployConfig"
+		},
+		{
+			"name": "apideploy.config.server-urls",
+			"type": "java.util.List",
+			"description": "Gateway address, can be configured for different environments (e.g., local,test, pre-production, production) with distinct addresses",
+			"defaultValue": "https://${gatewayUrl}",
+			"sourceType": "com.kalman03.apideploy.core.domain.ApideployConfig"
+		},
+		{
+			"name": "apideploy.config.global-headers",
+			"type": "java.util.List",
+			"description": "Global request headers",
+			"sourceType": "com.kalman03.apideploy.core.domain.ApideployConfig"
+		},
+		{
+			"name": "apideploy.config.global-url-params",
+			"type": "java.util.List",
+			"description": "Global request URL parameters",
+			"sourceType": "com.kalman03.apideploy.core.domain.ApideployConfig"
+		}
+	]
+}
