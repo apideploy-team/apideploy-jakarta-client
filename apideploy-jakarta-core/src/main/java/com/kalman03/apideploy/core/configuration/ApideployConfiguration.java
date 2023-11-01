@@ -42,8 +42,7 @@ import lombok.extern.slf4j.Slf4j;
 @ConditionalOnProperty(prefix = "apideploy.config", name = "enabled", havingValue = "true", matchIfMissing = true)
 @AutoConfiguration
 @ComponentScan(basePackages = { "com.kalman03.apideploy.javadoc.dubbo", "com.kalman03.apideploy.javadoc.spring",
-		"com.kalman03.apideploy.swagger3.webflux", "com.kalman03.apideploy.swagger3.webmvc",
-		"com.kalman03.apideploy.swagger2.webmvc" })
+		"com.kalman03.apideploy.swagger3.webflux", "com.kalman03.apideploy.swagger3.webmvc" })
 public class ApideployConfiguration
 		implements ApplicationListener<ApplicationReadyEvent>, InitializingBean, ApplicationContextAware {
 
