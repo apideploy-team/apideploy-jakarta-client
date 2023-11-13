@@ -14,6 +14,7 @@ import com.kalman03.apideploy.core.utils.ApideployClientUtils;
 import com.ly.doc.builder.ProjectDocConfigBuilder;
 import com.ly.doc.builder.openapi.OpenApiBuilder;
 import com.ly.doc.constants.ComponentTypeEnum;
+import com.ly.doc.constants.DocGlobalConstants;
 import com.ly.doc.constants.FrameworkEnum;
 import com.ly.doc.factory.BuildTemplateFactory;
 import com.ly.doc.helper.JavaProjectBuilderHelper;
@@ -66,6 +67,7 @@ public abstract class JavadocApiBuilder implements ApiBuilderService<JavadocSync
 
 		public String getOpenAPIJson(final ApibuilderParam apibuilderParam, ApiConfig apiConfig,
 				List<ApiDoc> apiDocList) {
+			this.setComponentKey(DocGlobalConstants.OPENAPI_3_COMPONENT_KRY);
 			Map<String, Object> json = new HashMap<>(8);
 			json.put("openapi", "3.0.3");
 			json.put("info", buildInfo(apiConfig));
