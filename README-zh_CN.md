@@ -1,3 +1,5 @@
+[English](README.md) | 中文
+
 ### 介绍
 
 **apideploy-jakarta-client** 是一个Java系统的API 文档自动生成工具包与[apideploy.com](https://www.apideploy.com)网站的部署SDK，它兼容[Swagger3 (OAS 3.0)](https://swagger.io/specification/v3/), [Javadoc](https://zh.wikipedia.org/wiki/Javadoc)规范，支持Java开发框架如 [Spring WebMVC](https://docs.spring.io/spring-framework/reference/web/webmvc.html), [Spring WebFlux](https://docs.spring.io/spring-framework/reference/web/webflux.html) 以及[Apache Dubbo](https://cn.dubbo.apache.org/zh-cn/)的文档注释。
@@ -45,9 +47,9 @@ apideploy.config.appSecret=${appSecret}
 apideploy.config.autoPublish=true
 ```
 
-配置文件中的`${appId}`和`${appSecret}`可以通过apideploy.com网站免费申请。关于详细申请方式，请参考：www。
+配置文件中的`${appId}`和`${appSecret}`可以通过apideploy.com网站免费申请。
 
-关于更多参数配置请参考：www
+关于更多参数配置请参考：[https://doc.apideploy.cn/](https://doc.apideploy.cn/)
 
 3.添加annotation以启用apideploy：
 

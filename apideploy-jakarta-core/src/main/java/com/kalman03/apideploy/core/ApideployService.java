@@ -1,4 +1,4 @@
-package com.kalman03.apideploy.core.configuration;
+package com.kalman03.apideploy.core;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -12,13 +12,10 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 import org.springframework.util.StringUtils;
@@ -39,26 +36,21 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @EnableConfigurationProperties(ApideployConfig.class)
-@ConditionalOnProperty(prefix = "apideploy.config", name = "enabled", havingValue = "true", matchIfMissing = true)
-@AutoConfiguration
+@ConditionalOnProperty(prefix = "apideploy.config", name = "enabled", havingValue = "true", matchIfMissing = false)
 @ComponentScan(basePackages = { "com.kalman03.apideploy.javadoc.dubbo", "com.kalman03.apideploy.javadoc.spring",
 		"com.kalman03.apideploy.swagger3.webflux", "com.kalman03.apideploy.swagger3.webmvc" })
-public class ApideployConfiguration
-		implements ApplicationListener<ApplicationReadyEvent>, InitializingBean, ApplicationContextAware {
+public class ApideployService implements InitializingBean, ApplicationContextAware {
 
-	private final ApideployConfig apideployConfig;
+	private ApideployConfig apideployConfig;
 	private ApplicationContext applicationContext;
 	private ApiBuilderService<?> apiBuilderService;
 
-	public ApideployConfiguration(@Autowired ApideployConfig apideployConfig) {
+	@Autowired(required = false)
+	public ApideployService(ApideployConfig apideployConfig) {
 		this.apideployConfig = apideployConfig;
-		this.checkApideployConfig();
 	}
 
 	private void checkApideployConfig() {
-		if (!apideployConfig.isEnabled()) {
-			return;
-		}
 		if (!StringUtils.hasText(apideployConfig.getAppId())) {
 			throw new IllegalArgumentException("Apideploy--> apideploy.config.appId is required.");
 		}
@@ -102,8 +94,8 @@ public class ApideployConfiguration
 		return data;
 	}
 
-	@Override
-	public void onApplicationEvent(ApplicationReadyEvent event) {
+	public void onApplicationReady() {
+		this.checkApideployConfig();
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {

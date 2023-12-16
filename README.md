@@ -1,3 +1,5 @@
+English | [中文](README-zh_CN.md)
+
 ### Introduction
 
 **apideploy-jakarta-client** is a java project **API document automatic generation toolkit and [apideploy.com](https://www.apideploy.com) website deployment SDK**. It supports [Swagger3 (OAS 3.0)](https://swagger.io/specification/v3/), [Javadoc specifications](https://en.wikipedia.org/wiki/Javadoc), and Java development frameworks such as [Spring WebMVC](https://docs.spring.io/spring-framework/reference/web/webmvc.html), [Spring WebFlux](https://docs.spring.io/spring-framework/reference/web/webflux.html) and [Apache Dubbo](https://dubbo.apache.org/en/index.html)'s documentation comments.
@@ -45,9 +47,9 @@ apideploy.config.appSecret=${appSecret}
 apideploy.config.autoPublish=true
 ```
 
-The `${appId}` and `${appSecret}` in the configuration file can be applied for free through the apideploy.com website. For detailed application methods, please refer to: www.
+The `${appId}` and `${appSecret}` in the configuration file can be applied for free through the apideploy.com website. 
 
-For more parameter configuration, please refer to: www
+For more parameter configuration, please refer to: ：[https://doc.apideploy.cn/](https://doc.apideploy.cn/)
 
 3.Add annotation to enable API deploy.
 
