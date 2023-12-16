@@ -20,7 +20,7 @@ public class ApideployAutoConfiguration implements ApplicationListener<Applicati
 	private ApideployService apideployService;
 
 	@Autowired(required = false)
-	public ApideployAutoConfiguration(ApideployService apideployService) {
+	public void setApideployService(ApideployService apideployService) {
 		this.apideployService = apideployService;
 	}
 
@@ -32,4 +32,5 @@ public class ApideployAutoConfiguration implements ApplicationListener<Applicati
 			log.warn("Apideploy service is not enabled.Consider configuring apideploy.config.enabled=true first");
 		}
 	}
+
 }
