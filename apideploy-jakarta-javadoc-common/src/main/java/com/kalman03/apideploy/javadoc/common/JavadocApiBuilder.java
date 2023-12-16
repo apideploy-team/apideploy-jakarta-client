@@ -48,6 +48,12 @@ public abstract class JavadocApiBuilder implements ApiBuilderService<JavadocSync
 			.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true)
 			.setTimeZone(TimeZone.getTimeZone(ZoneId.systemDefault()));
 	
+	@Override
+	public String getApiData(ApibuilderParam apibuilderParam) {
+		JavadocSyncData data = getApiObjects(apibuilderParam);
+		return toJSONString(data);
+	}
+
 	protected abstract ApiBuilderType getApiBuilderType();
 
 	@SuppressWarnings("unchecked")

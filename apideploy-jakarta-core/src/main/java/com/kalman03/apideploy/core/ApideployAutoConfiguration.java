@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,12 +14,13 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Configuration
+@Import(ApideployService.class)
 public class ApideployAutoConfiguration implements ApplicationListener<ApplicationReadyEvent> {
 
 	private ApideployService apideployService;
 
 	@Autowired(required = false)
-	public void setApideployService(ApideployService apideployService) {
+	public ApideployAutoConfiguration(ApideployService apideployService) {
 		this.apideployService = apideployService;
 	}
 

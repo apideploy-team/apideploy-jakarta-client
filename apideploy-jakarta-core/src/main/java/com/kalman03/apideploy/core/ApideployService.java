@@ -18,6 +18,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -35,6 +36,7 @@ import lombok.extern.slf4j.Slf4j;
  * @since 2023-08-18
  */
 @Slf4j
+@Service
 @EnableConfigurationProperties(ApideployConfig.class)
 @ConditionalOnProperty(prefix = "apideploy.config", name = "enabled", havingValue = "true", matchIfMissing = false)
 @ComponentScan(basePackages = { "com.kalman03.apideploy.javadoc.dubbo", "com.kalman03.apideploy.javadoc.spring",
@@ -58,7 +60,6 @@ public class ApideployService implements InitializingBean, ApplicationContextAwa
 			throw new IllegalArgumentException("Apideploy--> apideploy.config.appSecret is required.");
 		}
 	}
-
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void afterPropertiesSet() throws Exception {
