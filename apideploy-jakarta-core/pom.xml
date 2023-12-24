@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.kalman03</groupId>
 		<artifactId>apideploy-jakarta-client</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
+		<version>1.0.2</version>
 	</parent>
 
 	<artifactId>apideploy-jakarta-core</artifactId>
