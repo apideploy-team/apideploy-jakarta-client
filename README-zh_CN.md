@@ -51,21 +51,9 @@ apideploy.config.autoPublish=true
 
 关于更多参数配置请参考：[https://doc.apideploy.cn/](https://doc.apideploy.cn/)
 
-3.添加annotation以启用apideploy：
+3.运行并查看结果.
 
-```java
-@EnableApideploy
-@SpringBootApplication
-public class Application {
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-}
-```
-
-4.运行并查看结果：
-
-以上3步已经完成所有关于apideploy的配置，接下来就是写你的Javadoc（推荐）或者基于Swagger的方式完成API的定义。当一切就绪，在本地运行该系统，API会自动生成并同步到apideploy网站，接下来就可以在apideploy上愉快的查阅、调试并做版本管理了。
+以上步骤已经完成所有关于apideploy的配置，接下来就是写你的Javadoc（推荐）或者基于Swagger的方式完成API的定义。当一切就绪，在本地运行该系统，API会自动生成并同步到apideploy网站，接下来就可以在apideploy上愉快的查阅、调试并做版本管理了。
 
 ### Demo
 

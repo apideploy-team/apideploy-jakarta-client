@@ -41,7 +41,7 @@ Note: This client is suitable for springboot 3.0+ projects using Java 17 or abov
 
 ```properties
 apideploy.config.enabled=true
-apideploy.config.endpoint=https://localhost/openapi/sync
+apideploy.config.endpoint=https://www.apideploy.cn/openapi/sync
 apideploy.config.appId=${appId}
 apideploy.config.appSecret=${appSecret}
 apideploy.config.autoPublish=true
@@ -51,19 +51,7 @@ The `${appId}` and `${appSecret}` in the configuration file can be applied for f
 
 For more parameter configuration, please refer to: ：[https://doc.apideploy.cn/](https://doc.apideploy.cn/)
 
-3.Add annotation to enable API deploy.
-
-```java
-@EnableApideploy
-@SpringBootApplication
-public class Application {
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-}
-```
-
-4.Run it and see the final result.
+3.Run it and see the final result.
 
 The above three steps have completed all the configuration of apideploy. The next step is to write your Javadoc (strongly recommended) or complete the API definition based on Swagger. When everything is ready, run the system locally and the API will be automatically generated and synchronized to the [apideploy.com](https://www.apideploy.com) website. Then you can happily check, debug and do version management on [apideploy.com](https://www.apideploy.com) .
 
