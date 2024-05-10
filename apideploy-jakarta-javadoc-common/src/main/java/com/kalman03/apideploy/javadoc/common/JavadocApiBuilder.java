@@ -18,6 +18,7 @@ import com.kalman03.apideploy.core.builder.ApiBuilderService;
 import com.kalman03.apideploy.core.constants.ApiBuilderType;
 import com.kalman03.apideploy.core.domain.ApibuilderParam;
 import com.ly.doc.builder.ProjectDocConfigBuilder;
+import com.ly.doc.constants.ComponentTypeEnum;
 import com.ly.doc.constants.FrameworkEnum;
 import com.ly.doc.factory.BuildTemplateFactory;
 import com.ly.doc.helper.JavaProjectBuilderHelper;
@@ -55,6 +56,7 @@ public abstract class JavadocApiBuilder implements ApiBuilderService<JavadocSync
 		apiConfig.setServerUrl(apibuilderParam.getApideployConfig().getServerUrls().get(0));
 		apiConfig.setServerEnv(apibuilderParam.getApideployConfig().getServerUrls().get(0));
 		apiConfig.setParamsDataToTree(true);
+		apiConfig.setComponentType(ComponentTypeEnum.NORMAL.getComponentType());
 		ApiBuilderType apiBuilderType = getApiBuilderType();
 		String framework = apiBuilderType.equals(ApiBuilderType.JAVADOC_SPRINGWEB) ? FrameworkEnum.SPRING.getFramework()
 				: FrameworkEnum.DUBBO.getFramework();
