@@ -12,6 +12,9 @@ import lombok.Data;
 public class ApideployData {
 
 	private String openAPI;
+	
+	@Deprecated
+	private String oapi;
 
 	private ApiBuilderType apiBuilderType;
 }

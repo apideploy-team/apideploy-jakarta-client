@@ -49,7 +49,7 @@ public abstract class JavadocApiBuilder implements ApiBuilderService<JavadocSync
 
 	protected abstract ApiBuilderType getApiBuilderType();
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public JavadocSyncData getApiObjects(ApibuilderParam apibuilderParam) {
 		ApiConfig apiConfig = ApiConfig.getInstance();
@@ -68,7 +68,10 @@ public abstract class JavadocApiBuilder implements ApiBuilderService<JavadocSync
 		JavadocSyncData apiSyncData = new JavadocSyncData();
 		Map<String, Object> openApiMap = new ExtraOpenApiBuilder().getOpenAPIJson(apibuilderParam, apiConfig,
 				apiDocList);
+		Map<String, Object> old_openApiMap = new OExtraOpenApiBuilder().getOpenAPIJson(apibuilderParam, apiConfig,
+				apiDocList);
 		apiSyncData.setOpenAPI(toJSONString(openApiMap));
+		apiSyncData.setOapi(toJSONString(old_openApiMap));
 		apiDocList.forEach(item -> {
 			item.getList().forEach(child -> {
 				child.setClazzDoc(null);
