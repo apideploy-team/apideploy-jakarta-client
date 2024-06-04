@@ -5,6 +5,7 @@ import java.time.ZoneId;
 import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.kalman03.apideploy.core.builder.ApiBuilderService;
 import com.kalman03.apideploy.core.constants.ApiBuilderType;
 import com.kalman03.apideploy.core.domain.ApibuilderParam;
+import com.kalman03.apideploy.core.domain.ApideployConfig;
 import com.ly.doc.builder.ProjectDocConfigBuilder;
 import com.ly.doc.constants.ComponentTypeEnum;
 import com.ly.doc.constants.FrameworkEnum;
@@ -52,11 +54,24 @@ public abstract class JavadocApiBuilder implements ApiBuilderService<JavadocSync
 	@SuppressWarnings("unchecked")
 	@Override
 	public JavadocSyncData getApiObjects(ApibuilderParam apibuilderParam) {
+		ApideployConfig apideployConfig = apibuilderParam.getApideployConfig();
 		ApiConfig apiConfig = ApiConfig.getInstance();
-		apiConfig.setServerUrl(apibuilderParam.getApideployConfig().getServerUrls().get(0));
-		apiConfig.setServerEnv(apibuilderParam.getApideployConfig().getServerUrls().get(0));
+		apiConfig.setServerUrl(apideployConfig.getServerUrls().get(0));
+		apiConfig.setServerEnv(apideployConfig.getServerUrls().get(0));
 		apiConfig.setParamsDataToTree(true);
 		apiConfig.setComponentType(ComponentTypeEnum.NORMAL.getComponentType());
+		if (apideployConfig.getExcludePackagePatterns() != null
+				&& !apideployConfig.getExcludePackagePatterns().isEmpty()) {
+			String packageExcludeFilters = apideployConfig.getExcludePackagePatterns().stream()
+					.collect(Collectors.joining(","));
+			apiConfig.setPackageExcludeFilters(packageExcludeFilters);
+		}
+		if (apideployConfig.getIncludePackagePatterns() != null
+				&& !apideployConfig.getIncludePackagePatterns().isEmpty()) {
+			String packageFilters = apideployConfig.getIncludePackagePatterns().stream()
+					.collect(Collectors.joining(","));
+			apiConfig.setPackageFilters(packageFilters);
+		}
 		ApiBuilderType apiBuilderType = getApiBuilderType();
 		String framework = apiBuilderType.equals(ApiBuilderType.JAVADOC_SPRINGWEB) ? FrameworkEnum.SPRING.getFramework()
 				: FrameworkEnum.DUBBO.getFramework();

@@ -51,4 +51,12 @@ public class ApideployConfig {
 	 * Set the publish strategy when API sync success. The default is true and will be published automatically.
 	 */
 	private boolean autoPublish = true;
+	/**
+	 * Add patterns for packages the API should be included in.
+	 */
+	private List<String> includePackagePatterns;
+	/**
+	 * Add patterns for packages the API should be excluded from.
+	 */
+	private List<String> excludePackagePatterns;
 }
