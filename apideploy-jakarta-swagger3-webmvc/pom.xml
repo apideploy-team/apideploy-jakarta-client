@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.kalman03</groupId>
 		<artifactId>apideploy-jakarta-client</artifactId>
-		<version>1.0.4</version>
+		<version>1.0.5</version>
 	</parent>
 	<artifactId>apideploy-jakarta-swagger3-webmvc</artifactId>
 
