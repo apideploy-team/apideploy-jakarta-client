@@ -5,9 +5,11 @@
 	<parent>
 		<groupId>com.kalman03</groupId>
 		<artifactId>apideploy-jakarta-client</artifactId>
-		<version>1.0.8</version>
+		<version>1.0.9</version>
 	</parent>
 	<artifactId>apideploy-jakarta-javadoc-springweb</artifactId>
+	<name>apideploy-jakarta-javadoc-springweb</name>
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.kalman03</groupId>
